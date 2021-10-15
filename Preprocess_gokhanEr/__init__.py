@@ -135,7 +135,7 @@ def get_urls(words):
 
     return utils._get_urls(words)
 
-def get_remove_emails(words):
+def remove_emails(words):
 
     """
     Remove Emails
