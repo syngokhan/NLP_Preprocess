@@ -184,7 +184,7 @@ def _get_urls(words):
 
     return urls_length, urls_list
 
-def _get_remove_emails(words):
+def _remove_emails(words):
 
     words = re.sub(r'([a-z0-9+._-]+@[a-z0-9+._-]+\.[a-z0-9+_-]+)',"",words)
 

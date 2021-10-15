@@ -144,7 +144,7 @@ def get_remove_emails(words):
     :return: Remove Emails Words
     """
 
-    return utils._get_remove_emails(words)
+    return utils._remove_emails(words)
 
 def remove_urls(words):
     """
