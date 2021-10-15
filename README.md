@@ -4,7 +4,7 @@ This python package is prepared by GokhanErsoz
 
 Install
 
-'pip install git+ssh://https://github.com/syngokhan/Preprocess_NLP.git'
+'pip install pip install git+ssh://git@github.com/syngokhan/Preprocess_NLP.git'
 
 Uninstall
 

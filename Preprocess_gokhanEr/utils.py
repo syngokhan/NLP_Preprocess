@@ -16,10 +16,6 @@ import unicodedata
 nlp = spacy.load("en_core_web_sm")
 
 def _get_wordcounts(words):
-    """
-    Word Count
-
-    """
 
     s = str(words).split()
     word_length = len(s)
@@ -27,10 +23,6 @@ def _get_wordcounts(words):
     return word_length
 
 def _get_charcounts(words):
-    """
-    Charachters Count
-
-    """
 
     s = str(words).split()
     words = "".join(s)
@@ -38,20 +30,13 @@ def _get_charcounts(words):
 
     return char_length
 
-def __get_avg_wordlength(words):
-    """
-    Average Word Length
+def _get_avg_wordlength(words):
 
-    """
     avg = _get_charcounts(words) / _get_wordcounts(words)
 
     return avg
 
 def _get_stopwords_counts(words):
-    """
-    StopWords Counts
-
-    """
 
     length = ([word for word in words.split() if word in stopwords])
 
@@ -59,21 +44,11 @@ def _get_stopwords_counts(words):
 
 def _get_hashtag_counts(words):
 
-    """
-    #HashTags Counts
-
-    """
-
     hashtags_length = len([word for word in words if word.startswith("#")])
 
     return hashtags_length
 
 def _get_mentions_counts(words):
-
-    """
-    @Mentions Counts
-
-    """
 
     mentions_length = len([word for word in words if word.startswith("@")])
 
@@ -81,21 +56,11 @@ def _get_mentions_counts(words):
 
 def _get_digit_counts(words):
 
-    """
-    Digit Counts
-
-    """
-
     digit_length = len([word for word in words if word.isdigit()])
 
     return digit_length
 
 def _get_uppercase_counts(words):
-
-    """
-    UpperCase Counts
-
-    """
 
     uppercase_length = len([word for word in words if word.isupper()])
 
@@ -103,21 +68,12 @@ def _get_uppercase_counts(words):
 
 def _get_lower_convert(words):
 
-    """
-    Lower Convert
-
-    """
-
     lower_words = str(words).lower()
 
     return lower_words
 
 def _cont_exp(words):
-    """
-    Contraction to Expansion
 
-    """
-    
     contractions = {
         "ain't": "am not",
         "aren't": "are not",
@@ -216,25 +172,12 @@ def _cont_exp(words):
 
 def _get_emails(words) :
 
-    """
-    Emails Counts ,
-    Emails List
-
-    return : emails_length,emails_list
-    """
-
     emails_list = re.findall(r'([a-z0-9+._-]+@[a-z0-9+._-]+\.[a-z0-9+_-]+)', words)
     emails_length = len(emails_list)
 
     return emails_length, emails_list
 
 def _get_urls(words):
-    """
-    Urls List;
-    Urls Count
-
-    return : urls_length,urls_list
-    """
 
     urls_list = re.findall(r'(http|https|ftp|ssh)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?', words)
     urls_length = len(urls_list)
@@ -242,31 +185,18 @@ def _get_urls(words):
     return urls_length, urls_list
 
 def _get_remove_emails(words):
-    """
-    Remove Emails
-
-    """
 
     words = re.sub(r'([a-z0-9+._-]+@[a-z0-9+._-]+\.[a-z0-9+_-]+)',"",words)
 
     return words
 
 def _remove_urls(words):
-    """
-    Remove Urls
-
-    """
 
     words = re.sub(r'(http|https|ftp|ssh)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?',"",words)
 
     return words
 
 def _remove_rt(words):
-    """
-    Words contains example ;
-    rt @username: hello hirt
-
-    """
 
     words = re.sub("r\brt\b","",words)
 
@@ -287,22 +217,11 @@ def _remove_special_chars(words):
 
 def _remove_html_tags(words):
 
-    """
-    Remove HTML Tags and Strip
-
-    """
-
     words = BeautifulSoup(words,"lxml").get_text().strip()
 
     return words
 
 def _remove_accented_chars(words):
-
-    """
-    Remove Accented Chars
-
-    Example : 'Áccěntěd těxt' etc.
-    """
 
     words = unicodedata.normalize("NFKD",words).encode("ascii","ignore").decode("utf-8","ignore")
 
@@ -310,28 +229,12 @@ def _remove_accented_chars(words):
 
 def _remove_stopwords(words):
 
-    """
-    Remove StopWords
-
-    """
-
     words_list = [word for word in words.split() if word not in stopwords]
     words = " ".join(words_list)
 
     return words
 
 def _get_value_counts(dataframe,col_name,n=20,plot = False):
-
-    """
-    DataFrame ValueCounts
-
-    :param dataframe: DataFrame Structure
-    :param col_name: Select Name
-    :param n: Numner
-    :param plot: True or False
-
-    :return: Frequence DataFrame
-    """
 
     texts  = " ".join(dataframe[col_name])
     texts = texts.split()
@@ -351,10 +254,6 @@ def _get_value_counts(dataframe,col_name,n=20,plot = False):
     return frequence
 
 def _remove_common_words(words,remove_words):
-    """
-    Before Using Review DataFrame ValueCounts
-    Then Select What You Want to Extract and Send to Function (In List Structure!!)
-    """
 
     words_list = [word for word in words.split() if word not in remove_words ]
     words = " ".join(words_list)
@@ -362,10 +261,6 @@ def _remove_common_words(words,remove_words):
     return words
 
 def _remove_rare_words(words,remove_words):
-    """
-    Before Using Review DataFrame ValueCounts
-    Then Select What You Want to Extract and Send to Function (In List Structure!!)
-    """
 
     words_list = [word for word in words.split() if word not in remove_words ]
     words = " ".join(words_list)
@@ -373,10 +268,7 @@ def _remove_rare_words(words,remove_words):
     return words
 
 def _get_make_base(words):
-    """
-    Convert Into Base or Root From of Word
 
-    """
     words = str(words)
     words_list = []
     doc = nlp(words)
@@ -391,13 +283,6 @@ def _get_make_base(words):
     return " ".join(words_list)
 
 def _spelling_correction(words):
-    """
-    Spelling Correction
-
-    :param words
-
-    :return: correct_words
-    """
 
     correct_words = TextBlob(words).correct()
 
