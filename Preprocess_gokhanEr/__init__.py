@@ -135,7 +135,7 @@ def get_urls(words):
 
     return utils._get_urls(words)
 
-def get_remove_emails(words):
+def remove_emails(words):
 
     """
     Remove Emails
@@ -144,7 +144,7 @@ def get_remove_emails(words):
     :return: Remove Emails Words
     """
 
-    return utils._get_remove_emails(words)
+    return utils._remove_emails(words)
 
 def remove_urls(words):
     """
@@ -255,6 +255,17 @@ def remove_rare_words(words,remove_words):
 
     return utils._remove_rare_words(words,remove_words)
 
+def remove_dups_char(words):
+    """
+    Example :
+    * lllooooovvveeee youuuu
+    * love you
+
+    :param words
+    :return: words
+    """
+    return utils._remove_dups_char(words)
+
 def get_make_base(words):
     """
     Convert Into Base or Root From of Word
@@ -275,3 +286,13 @@ def spelling_correction(words):
     :return: Words
     """
     return utils._spelling_correction(words)
+
+def get_basic_features(dataframe):
+    """
+    Basic Functions add Columns
+
+    :param dataframe
+    :return: dataframe
+    """
+
+    return utils._get_basic_features(dataframe)
