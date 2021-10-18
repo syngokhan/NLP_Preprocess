@@ -14,8 +14,6 @@ from textblob import TextBlob
 from bs4 import BeautifulSoup
 import unicodedata
 
-from sklearn.feature_extraction.text import CountVectorizer
-
 nlp = spacy.load("en_core_web_sm")
 
 def _get_wordcounts(words):
@@ -47,11 +45,10 @@ def _get_stopwords_counts(words):
 
 def _get_hashtag_counts(words):
 
-<<<<<<< HEAD
-    # True False dönüyor zaten Startswith("#")
+    """
+    True False dönüyor zaten Startswith("#")
+    """
 
-=======
->>>>>>> origin/master
     hashtags_length = len([word for word in words if word.startswith("#")])
 
     return hashtags_length
@@ -64,14 +61,9 @@ def _get_mentions_counts(words):
 
 def _get_digit_counts(words):
 
-<<<<<<< HEAD
-    #digit_length = len([word for word in words if word.isdigit()])
 
     digit = re.findall(r"[0-9,.]+",words)
     digit_length = len(digit)
-=======
-    digit_length = len([word for word in words if word.isdigit()])
->>>>>>> origin/master
 
     return digit_length
 
@@ -401,8 +393,6 @@ def _cont_exp(words):
 
     if type(words) is str:
         for key in contractions:
-            #value = contractions[key]
-            #words = words.replace(key,value)
             values = contractions[key]
             raw_text = r"\b" + key + r"\b"
             words = re.sub(raw_text,values,words)
@@ -415,11 +405,8 @@ def _cont_exp(words):
 
 def _get_emails(words) :
 
-<<<<<<< HEAD
     emails_list = re.findall(r'([a-z0-9+._-]+@[a-z0-9+._-]+\.[a-z0-9+_-]+\b)', words)
-=======
-    emails_list = re.findall(r'([a-z0-9+._-]+@[a-z0-9+._-]+\.[a-z0-9+_-]+)', words)
->>>>>>> origin/master
+
     emails_length = len(emails_list)
 
     return emails_length, emails_list
@@ -514,19 +501,16 @@ def _remove_rare_words(words,remove_words):
 
     return words
 
-<<<<<<< HEAD
-##
 def _remove_dups_char(words):
+
     """
     * lllooooovvveeee youuuu
     * love you
     """
+
     words = re.sub("(.)\\1{2,}","\\1",words)
     return words
-##
 
-=======
->>>>>>> origin/master
 def _get_make_base(words):
 
     words = str(words)
@@ -549,7 +533,9 @@ def _spelling_correction(words):
     return correct_words
 
 def _get_basic_features(dataframe):
+
     if type(dataframe) == pd.pandas.core.frame.DataFrame :
+
         dataframe['char_counts'] = dataframe['text'].apply(lambda x: _get_charcounts(x))
         dataframe['word_counts'] = dataframe['text'].apply(lambda x: _get_wordcounts(x))
         dataframe['avg_wordlength'] = dataframe['text'].apply(lambda x: _get_avg_wordlength(x))
@@ -559,6 +545,7 @@ def _get_basic_features(dataframe):
         dataframe['digits_counts'] = dataframe['text'].apply(lambda x: _get_digit_counts(x))
         dataframe['uppercase_counts'] = dataframe['text'].apply(lambda x: _get_uppercase_counts(x))
     else:
+
         print("ERROR : This functions takes only Pandas DataFrame")
 
     return dataframe

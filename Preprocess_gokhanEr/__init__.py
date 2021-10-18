@@ -1,6 +1,6 @@
 from Preprocess_gokhanEr import utils
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 def get_wordcounts(words):
     """
@@ -285,7 +285,7 @@ def spelling_correction(words):
 
     :return: Words
     """
-<<<<<<< HEAD
+
     return utils._spelling_correction(words)
 
 def get_basic_features(dataframe):
@@ -297,6 +297,6 @@ def get_basic_features(dataframe):
     """
 
     return utils._get_basic_features(dataframe)
-=======
-    return utils._spelling_correction(words)
->>>>>>> origin/master
+
+
+
