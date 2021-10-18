@@ -288,7 +288,7 @@ def spelling_correction(words):
 
     return utils._spelling_correction(words)
 
-def get_basic_features(dataframe):
+def get_basic_features(dataframe,col_name):
     """
     Basic Functions add Columns
 
@@ -296,7 +296,7 @@ def get_basic_features(dataframe):
     :return: dataframe
     """
 
-    return utils._get_basic_features(dataframe)
+    return utils._get_basic_features(dataframe,col_name)
 
 
 
