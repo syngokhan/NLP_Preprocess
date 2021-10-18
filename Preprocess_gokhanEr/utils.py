@@ -41,7 +41,8 @@ def _get_stopwords_counts(words):
 
     length = ([word for word in words.split() if word in stopwords])
 
-    return length
+
+    return len(length)
 
 def _get_hashtag_counts(words):
 
