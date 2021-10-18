@@ -285,6 +285,7 @@ def spelling_correction(words):
 
     :return: Words
     """
+<<<<<<< HEAD
     return utils._spelling_correction(words)
 
 def get_basic_features(dataframe):
@@ -296,3 +297,6 @@ def get_basic_features(dataframe):
     """
 
     return utils._get_basic_features(dataframe)
+=======
+    return utils._spelling_correction(words)
+>>>>>>> origin/master

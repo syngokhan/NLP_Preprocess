@@ -47,8 +47,11 @@ def _get_stopwords_counts(words):
 
 def _get_hashtag_counts(words):
 
+<<<<<<< HEAD
     # True False dönüyor zaten Startswith("#")
 
+=======
+>>>>>>> origin/master
     hashtags_length = len([word for word in words if word.startswith("#")])
 
     return hashtags_length
@@ -61,10 +64,14 @@ def _get_mentions_counts(words):
 
 def _get_digit_counts(words):
 
+<<<<<<< HEAD
     #digit_length = len([word for word in words if word.isdigit()])
 
     digit = re.findall(r"[0-9,.]+",words)
     digit_length = len(digit)
+=======
+    digit_length = len([word for word in words if word.isdigit()])
+>>>>>>> origin/master
 
     return digit_length
 
@@ -408,7 +415,11 @@ def _cont_exp(words):
 
 def _get_emails(words) :
 
+<<<<<<< HEAD
     emails_list = re.findall(r'([a-z0-9+._-]+@[a-z0-9+._-]+\.[a-z0-9+_-]+\b)', words)
+=======
+    emails_list = re.findall(r'([a-z0-9+._-]+@[a-z0-9+._-]+\.[a-z0-9+_-]+)', words)
+>>>>>>> origin/master
     emails_length = len(emails_list)
 
     return emails_length, emails_list
@@ -503,6 +514,7 @@ def _remove_rare_words(words,remove_words):
 
     return words
 
+<<<<<<< HEAD
 ##
 def _remove_dups_char(words):
     """
@@ -513,6 +525,8 @@ def _remove_dups_char(words):
     return words
 ##
 
+=======
+>>>>>>> origin/master
 def _get_make_base(words):
 
     words = str(words)
